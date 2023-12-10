@@ -6,4 +6,4 @@ The "main" index.html will be placed in the root folder (the folder you gave for
 
 I uploaded a folder that almost fully covers all the possible outcomes for the program, so you can test it out yourself!
 
-//The comments in the code are in Hungarian but it's main purpose is to give a little information about the main methods and functions.
+/The comments in the code are in Hungarian but it's main purpose is to give a little information about the main methods and functions./
