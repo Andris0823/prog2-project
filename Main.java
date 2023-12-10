@@ -4,7 +4,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        if (args.length < 1 || (args.length == 1 && (args[0].equals("-h") || args[0].equals("-help")))) //Atirtam a hibauzenet helyett egy Help-re, igy kicsit baratibb
+        if ((args.length < 1 || (args.length > 1) && (!args[1].equals("-c"))) || (args.length == 1 && (args[0].equals("-h") || args[0].equals("-help")))) //Atirtam a hibauzenet helyett egy Help-re, igy kicsit baratibb
         {
             System.out.println("HASZNALATI UTMUTATO:\n\nHa letre szeretnenk hozni a HTML fajlokat:\n\tjava Main.java <mappa eleresi utvonala>\n\nHa torolni szeretnenk a HTML fajlokat:\n\tjava Main.java <mappa eleresi utvonala> <-c>");
             return;
@@ -23,12 +23,21 @@ public class Main
                 return;
             }
         }
-        if (args.length == 2) //Cleaner meghivasa
+        if (args.length == 2 && args[1].equals("-c")) //Cleaner meghivasa
         {
-            if (args[1].equals("-c"))
+			File f = new File(args[0]);
+			if (f.isDirectory() || f.exists()) //Ellenorzi, hogy letezik-e a mappa amit megadtunk
+            {
                 cleaner(args[0]);
-            System.out.println("HTML fajlok torolve!");
-            return;
+				System.out.println("HTML fajlok torolve!");
+				return;
+            }
+            else
+            {
+                System.out.println("HIBA! Adj meg egy letezo eleresi utat!");
+                return;
+            }
+            
         }    
     }
     public static void cleaner(String path) //Cleaner metodus
